@@ -8,7 +8,8 @@ const Schema = mongoose.Schema;
  */
 let authSchema = new Schema({
     userId: {
-        type: String
+        type: String,
+        index: true
     },
     authToken: {
         type: String
