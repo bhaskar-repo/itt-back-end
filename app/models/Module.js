@@ -8,7 +8,8 @@ let moduleSchema = new Schema({
 
     issueId: {
         type: String,
-        default: ''
+        default: '',
+        index: true
     },
     fileId: {
         type: String,
