@@ -8,7 +8,8 @@ const Schema = mongoose.Schema;
 let globalSchema = new Schema({
 
     secretKey: {
-        type: String
+        type: String,
+        index: true
     }
 })
 
