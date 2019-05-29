@@ -321,7 +321,7 @@ let checkUserExistence = (req, res) => {
  */
 let resetPassword = (req, res) => {
     
-    UserModel.findOne({ email: req.body.email }, (err, details) => {
+    UserModel.findOne({ email: req.body.email },'userId email password', (err, details) => {
         if (err) {
             logger.error('error in resetting password', 'UserController:resetPassword()', 1);
             let apiResponse = responseLib.generateResponse(true, 'password reset failed', 202, null);
@@ -348,9 +348,12 @@ let resetPassword = (req, res) => {
                             res.send(apiResponse);
                         }
                         else {
+                            let response = {
+                                userId: userDetails.userId,
+                                email: userDetails.email
+                            }
                             logger.info('password reset successfully', 'UserController:resetPassword()', 1);
-                            let apiResponse = responseLib.generateResponse(false, 'password reset successful !', 200, userDetails);
-                            console.log(userDetails.password);
+                            let apiResponse = responseLib.generateResponse(false, 'password reset successful !', 200, response);                            
                             res.send(apiResponse);
                         }
                     })

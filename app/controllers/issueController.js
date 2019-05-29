@@ -270,7 +270,7 @@ let getSingleIssue = (req, res) => {
         .then(fetchIsWatcher)
         .then(fetchWatchersList)
         .then((resolve) => {
-            let apiResponse = responseLib.generateResponse(false, 'user fetched', 200, resolve);
+            let apiResponse = responseLib.generateResponse(false, 'issue fetched', 200, resolve);
             res.send(apiResponse);
         }).catch((err) => {
             res.send(err);
